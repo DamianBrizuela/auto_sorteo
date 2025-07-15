@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-const add_user = require('./manager')
+const {add_user, list_picked_numbers} = require('./manager')
 
 // Ruta básica
 app.get('/', (req, res) => {
@@ -15,6 +15,10 @@ app.post('/add_number', (req, res) => {
     const numbers = Array.isArray(number) ? number : [number];
     const response = add_user(name, numbers, paid);
     res.json(response);
+});
+
+app.post('/get_numbers', (req, res) => {
+  res.json(list_picked_numbers());
 });
 
 // Iniciar el servidor

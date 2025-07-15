@@ -16,7 +16,14 @@ function add_user(name, numbers, paid) {
     return ({
         'not_available': not_available,
         'available': selected
-    })
+    });
 }
 
-module.exports = add_user
+function list_picked_numbers() {
+    return numbers_selected;
+}
+
+module.exports = {
+    add_user,
+    list_picked_numbers
+}

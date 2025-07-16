@@ -1,13 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
-
-// Conexión a SQLite
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './database.sqlite' // Archivo donde se guarda la base
-});
+const  DataTypes  = require('sequelize');
+const sequelize = require('../database');
 
 // Defino un modelo
-const Cuadro = sequelize.define('Cuadro', {
+const NumericRecord = sequelize.define('NumericRecord', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true, 
@@ -36,13 +31,4 @@ const Cuadro = sequelize.define('Cuadro', {
     }
   });
 
-// Sincronización de tablas
-(async () => {
-    await sequelize.sync();
-  })();
-  
-  // Exporta los modelos y la conexión
-  module.exports = { 
-    sequelize, 
-    Cuadro
-  };
+  module.exports = NumericRecord;

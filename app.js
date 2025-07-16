@@ -12,14 +12,20 @@ app.get('/', (req, res) => {
 
 app.post('/add_number', (req, res) => {
     const { name, number, paid } = req.body;
-    const numbers = Array.isArray(number) ? number : [number];
-    const response = add_numbers(name, numbers, paid);
-    
+    var numbers = Array.isArray(number) ? number : [number];
+    var response = add_numbers(name, numbers, paid);
+
     res.json(response);
 });
 
-app.post('/get_numbers', (req, res) => {
-  res.json(numbers_selected());
+app.post('/get_numbers', async (req, res) => {
+    try {
+        response = await numbers_selected();
+        res.json(response);   
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'error al obtener datos'});
+    }
 });
 
 // Iniciar el servidor

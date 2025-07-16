@@ -1,18 +1,10 @@
-const { Cuadro } = require("./database");
+const { save_register, get_numbers } = require("./database/database_services");
 
-async function save_register(_number, _buyer, _paid, ) {
-    console.log(`${_number}: ${_buyer} -> ${_paid}`);
-    Cuadro.create({
-        buyer: _buyer,
-        number: _number,
-        paid: _paid
-    });
-}
+
 
 async function numbers_selected() {
-    const numbers = await Cuadro.findAll();
-    console.log('contenido: ', numbers.map(c => c.toJSON()));
-    return numbers;
+    const numbers = await get_numbers();
+    return numbers.map(c => c.toJSON());
 
 }
 

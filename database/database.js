@@ -42,4 +42,7 @@ const Cuadro = sequelize.define('Cuadro', {
   })();
   
   // Exporta los modelos y la conexión
-  module.exports = { sequelize, Cuadro };
+  module.exports = { 
+    sequelize, 
+    Cuadro
+  };
